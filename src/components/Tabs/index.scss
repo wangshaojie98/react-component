@@ -1,0 +1,20 @@
+.tab-menu > button {
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+}
+.tab-menu > button.active {
+  border-bottom: 2px solid #007bef;
+}
+.tab-menu > button:hover {
+  border-bottom: 2px solid #007bef;
+}
+.tab-view-item {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
