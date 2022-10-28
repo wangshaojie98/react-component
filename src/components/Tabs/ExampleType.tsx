@@ -35,3 +35,19 @@ const TabItem: React.FC<TabItemType> = (props) => <div {...props} />;
 Tabs.TabItem = TabItem
 
 export default Tabs
+
+interface DoMath {
+  (a: number, b: number): number;
+  multiply: (a: number, b: number) => number;
+}
+const doMath: DoMath = (a: number, b: number) => {
+  return a + b;
+};
+
+// ✅ Add method on function
+doMath.multiply = (a: number, b: number) => {
+  return a * b;
+};
+
+console.log(doMath.multiply(10, 5)); // 👉️ 50
+
