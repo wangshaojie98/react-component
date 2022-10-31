@@ -5,10 +5,9 @@ import {
   Modal,
   Tabs,
   Collapse,
-  Alert
+  Alert,
 } from "./components";
-import { useInterval } from "./hooks";
-
+import { useInterval, usePersistedState, useLocalStorage } from "./hooks";
 
 const Timer = () => {
   const [seconds, setSeconds] = React.useState(0);
@@ -17,6 +16,42 @@ const Timer = () => {
   }, 1000);
 
   return <p>{seconds}</p>;
+};
+const MyComponent = ({ name }: { name: string }) => {
+  const [val, setVal] = usePersistedState(name, 10);
+  return (
+    <>
+      <label>
+        value:
+        <input
+          value={val}
+          onChange={(e) => {
+            setVal(e.target.value);
+          }}
+        />
+      </label>
+    </>
+  );
+};
+
+const MyApp = () => {
+  const [name, setName] = React.useState("my-value");
+  return (
+    <div>
+      <>
+        <label>
+          key
+          <input
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </label>
+      </>
+      <MyComponent name={name} />
+    </div>
+  );
 };
 
 function App() {
@@ -68,6 +103,7 @@ function App() {
         </Collapse.Panel>
       </Collapse>
       <Alert message="Success Text" type="info" />
+      <MyApp />
     </div>
   );
 }
