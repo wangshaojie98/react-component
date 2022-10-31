@@ -1,6 +1,12 @@
 import React, { useState, useCallback } from "react";
-import { TagInput, MultiselectCheckbox, Modal, Tabs, Collapse } from "./components";
-import { useInterval } from './hooks'
+import {
+  TagInput,
+  MultiselectCheckbox,
+  Modal,
+  Tabs,
+  Collapse,
+} from "./components";
+import { useInterval } from "./hooks";
 
 const Timer = () => {
   const [seconds, setSeconds] = React.useState(0);
@@ -12,18 +18,15 @@ const Timer = () => {
 };
 
 function App() {
-  const [isModal, setModal] = useState(false)
+  const [isModal, setModal] = useState(false);
   const openModal = useCallback(() => {
-    setModal(!isModal)
-  }, [isModal])
+    setModal(!isModal);
+  }, [isModal]);
 
   const closeModal = useCallback(() => {
-    setModal(false)
-  }, [])
+    setModal(false);
+  }, []);
 
-  const onChange = (key: string | string[]) => {
-    console.log(key);
-  };
   return (
     <div className="App">
       <TagInput tags={["Nodejs", "MongoDB"]} />
@@ -51,17 +54,17 @@ function App() {
       </Tabs>
       {/* <Timer /> */}
 
-      <Collapse defaultActiveKey={['1']} onChange={onChange}>
-      <Collapse.Panel header="This is panel header 1" index="1">
-        <p>1</p>
-      </Collapse.Panel>
-      <Collapse.Panel header="This is panel header 2" index="2">
-        <p>2</p>
-      </Collapse.Panel>
-      <Collapse.Panel header="This is panel header 3" index="3">
-        <p>3</p>
-      </Collapse.Panel>
-    </Collapse>
+      <Collapse defaultActiveKey={["1"]} onChange={console.log}>
+        <Collapse.Panel header="This is panel header 1" index="1">
+          <p>1</p>
+        </Collapse.Panel>
+        <Collapse.Panel header="This is panel header 2" index="2">
+          <p>2</p>
+        </Collapse.Panel>
+        <Collapse.Panel header="This is panel header 3" index="3">
+          <p>3</p>
+        </Collapse.Panel>
+      </Collapse>
     </div>
   );
 }
