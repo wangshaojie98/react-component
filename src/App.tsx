@@ -5,8 +5,10 @@ import {
   Modal,
   Tabs,
   Collapse,
+  Alert
 } from "./components";
 import { useInterval } from "./hooks";
+
 
 const Timer = () => {
   const [seconds, setSeconds] = React.useState(0);
@@ -65,6 +67,7 @@ function App() {
           <p>3</p>
         </Collapse.Panel>
       </Collapse>
+      <Alert message="Success Text" type="info" />
     </div>
   );
 }
