@@ -7,7 +7,7 @@ import {
   Collapse,
   Alert,
 } from "./components";
-import { useInterval, usePersistedState, useLocalStorage } from "./hooks";
+import { useInterval, usePersistedState, useLocalStorage, useKeyPress, useHover, useAsync } from "./hooks";
 
 const Timer = () => {
   const [seconds, setSeconds] = React.useState(0);
@@ -17,6 +17,7 @@ const Timer = () => {
 
   return <p>{seconds}</p>;
 };
+
 const MyComponent = ({ name }: { name: string }) => {
   const [val, setVal] = usePersistedState(name, 10);
   return (
@@ -54,7 +55,54 @@ const MyApp = () => {
   );
 };
 
+const KeyPressDemo = () => {
+  const wPressed = useKeyPress('w');
+
+  return <p>The "w" key is {!wPressed ? 'not ' : ''}pressed!</p>;
+};
+
+const UseHoverDemo = () => {
+  const [hoverRef, isHovering] = useHover();
+
+  return <div ref={hoverRef}>{isHovering ? 'Hovering' : 'Not hovering'}</div>;
+};
+
+const UseAsyncDemo = () => {
+  const imgFetch = useAsync(url =>
+    fetch(url).then(response => response.json())
+  );
+
+  const handlerClickBtn = async () => {
+    const res = await imgFetch.run('https://dog.ceo/api/breeds/image/random')
+    console.log('handlerClickBtn: ', res);
+    console.log('handlerClickBtn1: ', imgFetch.value);
+  }
+  
+  return (
+    <div>
+      <button
+        onClick={handlerClickBtn}
+        disabled={imgFetch.isLoading}
+      >
+        Load image
+      </button>
+      <br />
+      {imgFetch.isLoading && <div>Loading...</div>}
+      {imgFetch.error && <div>Error {imgFetch.error}</div>}
+      {imgFetch.value && (
+        <img
+          src={imgFetch.value.message}
+          alt="avatar"
+          width={400}
+          height="auto"
+        />
+      )}
+    </div>
+  );
+};
+
 function App() {
+  console.log('App: ', 'App');
   const [isModal, setModal] = useState(false);
   const openModal = useCallback(() => {
     setModal(!isModal);
@@ -104,6 +152,9 @@ function App() {
       </Collapse>
       <Alert message="Success Text" type="info" />
       <MyApp />
+      <KeyPressDemo />
+      <UseHoverDemo />
+      <UseAsyncDemo />
     </div>
   );
 }
