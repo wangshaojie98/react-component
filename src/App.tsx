@@ -7,7 +7,7 @@ import {
   Collapse,
   Alert,
 } from "./components";
-import { useInterval, usePersistedState, useLocalStorage, useKeyPress, useHover, useAsync } from "./hooks";
+import { useInterval, usePersistedState, useLocalStorage, useKeyPress, useHover, useAsync, useGetSet } from "./hooks";
 
 const Timer = () => {
   const [seconds, setSeconds] = React.useState(0);
@@ -77,7 +77,7 @@ const UseAsyncDemo = () => {
     console.log('handlerClickBtn: ', res);
     console.log('handlerClickBtn1: ', imgFetch.value);
   }
-  
+
   return (
     <div>
       <button
@@ -101,6 +101,17 @@ const UseAsyncDemo = () => {
   );
 };
 
+const UseGetSetDemo = () => {
+  const [getCount, setCount] = useGetSet(0);
+  const onClick = () => {
+    console.log('click')
+    setTimeout(() => {
+      setCount(getCount() + 1);
+    }, 1_000);
+  };
+
+  return <button onClick={onClick}>Count: {getCount()}</button>;
+};
 function App() {
   console.log('App: ', 'App');
   const [isModal, setModal] = useState(false);
@@ -155,6 +166,7 @@ function App() {
       <KeyPressDemo />
       <UseHoverDemo />
       <UseAsyncDemo />
+      <UseGetSetDemo />
     </div>
   );
 }
