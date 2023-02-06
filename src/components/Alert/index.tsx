@@ -34,8 +34,9 @@ const Alert: React.FC<Alert> = ({
       console.log('卸载')
       timer.current && clearTimeout(timer.current)
     }
-  }, [timer.current])
+  }, [])
   console.log('timer: ', timer.current);
+  console.log('visible', visible)
   return (
     <>
     {

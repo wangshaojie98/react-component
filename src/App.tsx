@@ -7,7 +7,16 @@ import {
   Collapse,
   Alert,
 } from "./components";
-import { useInterval, usePersistedState, useLocalStorage, useKeyPress, useHover, useAsync, useGetSet } from "./hooks";
+import { 
+  useInterval, 
+  usePersistedState, 
+  useLocalStorage, 
+  useKeyPress, 
+  useHover, 
+  useAsync, 
+  useGetSet,
+  useNavigatorOnLine 
+} from "./hooks";
 
 const Timer = () => {
   const [seconds, setSeconds] = React.useState(0);
@@ -112,6 +121,12 @@ const UseGetSetDemo = () => {
 
   return <button onClick={onClick}>Count: {getCount()}</button>;
 };
+
+const UseNavigatorOnLineDemo = () => {
+  const isOnLine = useNavigatorOnLine()
+
+  return <p>if user is {isOnLine ? 'online' : 'offline'}</p>
+}
 function App() {
   console.log('App: ', 'App');
   const [isModal, setModal] = useState(false);
@@ -167,6 +182,7 @@ function App() {
       <UseHoverDemo />
       <UseAsyncDemo />
       <UseGetSetDemo />
+      <UseNavigatorOnLineDemo />
     </div>
   );
 }
