@@ -59,5 +59,5 @@ export default ButtonWithRipple;
  * https://segmentfault.com/a/1190000002405897
  * https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation
  * https://www.jianshu.com/p/1dd668ccc97a target vs currentTarget
- * 动画要比消失慢
+ * 动画要比元素消失慢
  */
