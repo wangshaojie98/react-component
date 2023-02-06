@@ -6,6 +6,8 @@ import {
   Tabs,
   Collapse,
   Alert,
+  CountDown,
+  ButtonWithRipple,
 } from "./components";
 import { 
   useInterval, 
@@ -183,6 +185,8 @@ function App() {
       <UseAsyncDemo />
       <UseGetSetDemo />
       <UseNavigatorOnLineDemo />
+      <CountDown />
+      <ButtonWithRipple onClick={() => {console.log()}}> ButtonWithRipple </ButtonWithRipple>
     </div>
   );
 }
