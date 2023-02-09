@@ -8,6 +8,7 @@ import {
   Alert,
   CountDown,
   ButtonWithRipple,
+  Rate
 } from "./components";
 import { 
   useInterval, 
@@ -187,6 +188,8 @@ function App() {
       <UseNavigatorOnLineDemo />
       <CountDown />
       <ButtonWithRipple onClick={() => {console.log()}}> ButtonWithRipple </ButtonWithRipple>
+      <Rate value={3} texts={['1', '2', '3']}/>
+      <Rate  />
     </div>
   );
 }
