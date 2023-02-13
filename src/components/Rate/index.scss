@@ -1,4 +1,7 @@
+$rate-star-color: #FFB400;
+
 .rate {
+  font-size: 20px;
   @at-root ul#{&}, 
   ul#{&} > li {
     display: inline-block;
@@ -18,20 +21,34 @@
     margin-left: 8px;
   }
 
-  .half-of-star {
-    position: absolute;
-    top: 0;
-    inset-inline-start: 0;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-  }
 
-  .one-star {
-    // color: rgba(0, 0, 0, 0.06);
-    transition: all 0.2s;
+  &-star {
+    color: #D9D9D9;
     user-select: none;
+    position: relative;
+    
+
+    &-first {
+      position: absolute;
+      top: 0;
+      inset-inline-start: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    &-half &-first,
+    &-half &-second {
+      opacity: 1;
+    }
+
+    &-half &-first,
+    &-full &-second {
+      color: $rate-star-color;
+    }
   }
+  
 }
 
 :where(.rate) .rate-star:not(:last-child) {

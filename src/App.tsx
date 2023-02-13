@@ -188,8 +188,11 @@ function App() {
       <UseNavigatorOnLineDemo />
       <CountDown />
       <ButtonWithRipple onClick={() => {console.log()}}> ButtonWithRipple </ButtonWithRipple>
-      <Rate value={3} texts={['1', '2', '3']}/>
-      <Rate  />
+      <Rate value={3} texts={['1', '2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text', '3']}/>
+      <Rate  allowHalf />
+      <Rate  clearable={true} character="$" allowHalf style={{ fontSize: 40 }} texts={['1', '2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text', '3']}/>
+      <Rate  clearable={true} allowHalf={true} />
+      <Rate  clearable={true} allowHalf={true} />
     </div>
   );
 }
