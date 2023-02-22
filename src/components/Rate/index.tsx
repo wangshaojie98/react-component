@@ -37,7 +37,7 @@ const Star = (props: StarProps) => {
   const characterNode = typeof character === 'function' ? character(props) : character;
 
   const getClassName = () => {
-    if (selection > id - 1 && selection < id) {
+    if (allowHalf && (selection > id - 1) && (selection < id)) {
       return 'half'
     }
 
@@ -190,18 +190,16 @@ class Model {
   }
 
   onClick(e: React.MouseEvent<HTMLElement>, id: number) {
-    console.log({ id, rating: this.rating})
-
-    if (this.clearable && this.rating === (isElementLeft(e) ? id - 0.5 : id)) {
+    if (this.clearable && this.rating === ((this.allowHalf && isElementLeft(e)) ? id - 0.5 : id)) {
       this.reset();
       return;
     }
 
-    this.handleClick(isElementLeft(e) ? id - 0.5 : id);
+    this.handleClick((this.allowHalf && isElementLeft(e)) ? id - 0.5 : id);
   }
 
   onMouseMove(e: React.MouseEvent<HTMLElement>, id: number) {
-    this.handleMouseMove(isElementLeft(e) ? id - 0.5 : id);
+    this.handleMouseMove((this.allowHalf && isElementLeft(e)) ? id - 0.5 : id);
   }
 
   onMouseLeave() {

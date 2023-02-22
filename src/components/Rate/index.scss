@@ -1,7 +1,8 @@
-$rate-star-color: #FFB400;
 
 .rate {
   font-size: 20px;
+$rate-star-color: #FFB400;
+
   @at-root ul#{&}, 
   ul#{&} > li {
     display: inline-block;
@@ -9,13 +10,11 @@ $rate-star-color: #FFB400;
     margin: 0;
     padding: 0;
   }
+  
   @at-root ul#{&} > li {
     cursor: pointer;
     position: relative;
   }
-  // @at-root ul#{&} {
-  //   display: inline-block;
-  // }
   
   &-text {
     margin-left: 8px;
@@ -26,7 +25,7 @@ $rate-star-color: #FFB400;
     color: #D9D9D9;
     user-select: none;
     position: relative;
-    
+    transition: all .3s;
 
     &-first {
       position: absolute;
@@ -36,6 +35,7 @@ $rate-star-color: #FFB400;
       height: 100%;
       overflow: hidden;
       opacity: 0;
+      z-index: 10;
     }
 
     &-half &-first,
@@ -46,6 +46,21 @@ $rate-star-color: #FFB400;
     &-half &-first,
     &-full &-second {
       color: $rate-star-color;
+    }
+
+    &-first,
+    &-second {
+      transition: all .3s;
+    }
+
+    &-first:hover,
+    &-second:hover {
+      transform: scale(1.1);
+    }
+
+    &-half:hover &-first,
+    &-full:hover &-second {
+      color: tint($rate-star-color,30%);
     }
   }
   

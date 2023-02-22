@@ -8,7 +8,8 @@ import {
   Alert,
   CountDown,
   ButtonWithRipple,
-  Rate
+  Rate,
+  File
 } from "./components";
 import { 
   useInterval, 
@@ -190,9 +191,15 @@ function App() {
       <ButtonWithRipple onClick={() => {console.log()}}> ButtonWithRipple </ButtonWithRipple>
       <Rate value={3} texts={['1', '2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text', '3']}/>
       <Rate  allowHalf />
-      <Rate  clearable={true} character="$" allowHalf style={{ fontSize: 40 }} texts={['1', '2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text', '3']}/>
-      <Rate  clearable={true} allowHalf={true} />
-      <Rate  clearable={true} allowHalf={true} />
+      <Rate  clearable character="$" allowHalf style={{ fontSize: 40 }} texts={['1', '2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text2sadfSuccess Text', '3']}/>
+      <Rate  clearable allowHalf/>
+      <Rate  clearable allowHalf />
+      
+      <Rate  disabled value={4} character={<i className="anticon anticon-star" />}/>
+      <Rate  value={4} character={({ id }) => {
+        return id + 1;
+      }}/>
+      <File />
     </div>
   );
 }
