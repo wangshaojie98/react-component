@@ -8,6 +8,7 @@ import {
 
 const Home = lazy(() => import('../page/home'))
 const TestHome = lazy(() => import('../page/home/test'))
+const TestHome1 = lazy(() => import('../page/home/test1'))
 const MyComponent = lazy(() => import('../page/component'))
 
 const router = createBrowserRouter([
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/TestHome",
-    element: <TestHome></TestHome>,
+    element: <Suspense><TestHome></TestHome></Suspense>,
+  },
+  {
+    path: "/TestHome1",
+    element: <Suspense><TestHome1></TestHome1></Suspense>,
   },
   {
     path: "/component",
