@@ -192,7 +192,8 @@ const Home = () => {
     <div>
       <Link to={"/component"}>component</Link>&nbsp;
       <Link to={"/TestHome"}>TestHome</Link>&nbsp;
-      <Link to={"/TestHome1"}>TestHome1</Link>
+      <Link to={"/TestHome1"}>TestHome1</Link>&nbsp;
+      <Link to={"/RenderFrame"}>RenderFrame</Link>
       <div className="para">
         <span id="A52750P474957S1296966" className="sent">
           <span>

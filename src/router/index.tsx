@@ -10,6 +10,7 @@ const Home = lazy(() => import('../page/home'))
 const TestHome = lazy(() => import('../page/home/test'))
 const TestHome1 = lazy(() => import('../page/home/test1'))
 const MyComponent = lazy(() => import('../page/component'))
+const RenderFrame = lazy(() => import('../page/RenderFrame'))
 
 const router = createBrowserRouter([
   
@@ -19,11 +20,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/TestHome",
-    element: <Suspense><TestHome></TestHome></Suspense>,
+    element: <Suspense><TestHome/></Suspense>,
   },
   {
     path: "/TestHome1",
-    element: <Suspense><TestHome1></TestHome1></Suspense>,
+    element: <Suspense><TestHome1/></Suspense>,
+  },
+  {
+    path: "/RenderFrame",
+    element: <Suspense><RenderFrame /></Suspense>,
   },
   {
     path: "/component",
