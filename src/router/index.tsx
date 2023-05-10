@@ -11,6 +11,7 @@ const TestHome = lazy(() => import('../page/home/test'))
 const TestHome1 = lazy(() => import('../page/home/test1'))
 const MyComponent = lazy(() => import('../page/component'))
 const RenderFrame = lazy(() => import('../page/RenderFrame'))
+const TestBox = lazy(() => import('../page/testBox'))
 
 const router = createBrowserRouter([
   
@@ -36,6 +37,12 @@ const router = createBrowserRouter([
       <MyComponent></MyComponent>
     </Suspense>,
   },
+  {
+    path: '/testBox',
+    element: <Suspense>
+      <TestBox />
+    </Suspense>
+  }
 ]);
 
 export default router
